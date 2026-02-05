@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/products/product-card';
 import { getNewArrivals } from '@/lib/products';
+import { motion } from 'framer-motion';
 
 export function NewArrivalsCarouselSection() {
   const scrollContainer = useRef<HTMLDivElement>(null);
@@ -45,7 +46,13 @@ export function NewArrivalsCarouselSection() {
     <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-secondary/30">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
-        <div className="mb-12 sm:mb-16 flex items-center justify-between">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 sm:mb-16 flex items-center justify-between"
+        >
           <div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-foreground mb-2">
               {t('new_arrivals_title')}
@@ -63,6 +70,7 @@ export function NewArrivalsCarouselSection() {
               onClick={() => scroll('left')}
               disabled={!canScrollLeft}
               aria-label="Scroll left"
+              className="rounded-full shadow-soft hover:shadow-soft-lg"
             >
               <ChevronLeft className="w-5 h-5" />
             </Button>
@@ -72,11 +80,12 @@ export function NewArrivalsCarouselSection() {
               onClick={() => scroll('right')}
               disabled={!canScrollRight}
               aria-label="Scroll right"
+              className="rounded-full shadow-soft hover:shadow-soft-lg"
             >
               <ChevronRight className="w-5 h-5" />
             </Button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Carousel */}
         <div
@@ -114,6 +123,7 @@ export function NewArrivalsCarouselSection() {
             onClick={() => scroll('left')}
             disabled={!canScrollLeft}
             aria-label="Scroll left"
+            className="rounded-full shadow-soft hover:shadow-soft-lg"
           >
             <ChevronLeft className="w-5 h-5" />
           </Button>
@@ -123,6 +133,7 @@ export function NewArrivalsCarouselSection() {
             onClick={() => scroll('right')}
             disabled={!canScrollRight}
             aria-label="Scroll right"
+            className="rounded-full shadow-soft hover:shadow-soft-lg"
           >
             <ChevronRight className="w-5 h-5" />
           </Button>

@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Mail } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export function NewsletterSection() {
   const [email, setEmail] = useState('');
@@ -20,15 +21,28 @@ export function NewsletterSection() {
     }
   };
 
+
   return (
-    <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-primary text-primary-foreground">
+    <motion.section
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.7 }}
+      className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-primary text-primary-foreground"
+    >
       <div className="mx-auto max-w-2xl text-center space-y-8">
         {/* Icon */}
-        <div className="flex justify-center">
-          <div className="p-3 bg-primary-foreground/20 rounded-full">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex justify-center"
+        >
+          <div className="p-3 bg-primary-foreground/20 rounded-full shadow-soft">
             <Mail className="w-8 h-8" />
           </div>
-        </div>
+        </motion.div>
 
         {/* Content */}
         <div className="space-y-4">
@@ -41,14 +55,21 @@ export function NewsletterSection() {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <motion.form
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          onSubmit={handleSubmit}
+          className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+        >
           <Input
             type="email"
             placeholder={t('newsletter_placeholder')}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="bg-white text-foreground placeholder:text-muted-foreground border-0 flex-1"
+            className="bg-white text-foreground placeholder:text-muted-foreground border-0 flex-1 rounded-full shadow-soft focus:shadow-soft-lg"
             aria-label="Email address"
           />
           <Button
@@ -57,13 +78,17 @@ export function NewsletterSection() {
           >
             {t('newsletter_button')}
           </Button>
-        </form>
+        </motion.form>
 
         {/* Success Message */}
         {isSubmitted && (
-          <p className="text-sm opacity-90 animate-fade-in">
+          <motion.p
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-sm opacity-90"
+          >
             {t('newsletter_success')}
-          </p>
+          </motion.p>
         )}
 
         {/* Terms */}
@@ -71,20 +96,6 @@ export function NewsletterSection() {
           {t('newsletter_privacy')}
         </p>
       </div>
-
-      <style jsx global>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-        .animate-fade-in {
-          animation: fadeIn 0.3s ease-in-out;
-        }
-      `}</style>
-    </section>
+    </motion.section>
   );
 }

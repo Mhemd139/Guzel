@@ -25,7 +25,7 @@ export function Footer() {
                 href="https://www.instagram.com/guzel_tayibe?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 hover:bg-muted rounded-lg transition-colors"
+                className="p-2 hover:bg-muted rounded-full transition-all duration-300 hover:scale-110 shadow-soft hover:shadow-soft-lg"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
@@ -34,7 +34,7 @@ export function Footer() {
                 href="https://pinterest.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 hover:bg-muted rounded-lg transition-colors"
+                className="p-2 hover:bg-muted rounded-full transition-all duration-300 hover:scale-110 shadow-soft hover:shadow-soft-lg"
                 aria-label="Pinterest"
               >
                 <Share2 className="w-5 h-5" />
@@ -43,14 +43,14 @@ export function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 hover:bg-muted rounded-lg transition-colors"
+                className="p-2 hover:bg-muted rounded-full transition-all duration-300 hover:scale-110 shadow-soft hover:shadow-soft-lg"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
                 href="mailto:hello@Guzel.com"
-                className="p-2 hover:bg-muted rounded-lg transition-colors"
+                className="p-2 hover:bg-muted rounded-full transition-all duration-300 hover:scale-110 shadow-soft hover:shadow-soft-lg"
                 aria-label="Email"
               >
                 <Mail className="w-5 h-5" />

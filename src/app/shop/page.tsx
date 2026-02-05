@@ -12,6 +12,7 @@ import { Select } from '@/components/ui/select';
 import { ProductCard } from '@/components/products/product-card';
 import { products, categories } from '@/lib/products';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 const COLORS = [
   { name: 'Cream', hex: '#FFF8F0' },
@@ -135,10 +136,10 @@ function FilterSidebar({
               key={color.hex}
               onClick={() => handleColorToggle(color.hex)}
               className={cn(
-                'w-8 h-8 rounded-full border-2 transition-all',
+                'w-10 h-10 rounded-full border-2 transition-all duration-300 shadow-soft hover:shadow-soft-lg',
                 filters.colors.includes(color.hex)
-                  ? 'border-foreground scale-110'
-                  : 'border-border hover:border-foreground/50'
+                  ? 'border-foreground scale-110 ring-2 ring-primary/30'
+                  : 'border-border hover:border-foreground/50 hover:scale-105'
               )}
               style={{ backgroundColor: color.hex }}
               title={color.name}
@@ -151,9 +152,9 @@ function FilterSidebar({
       {/* Price Range */}
       <div>
         <h3 className="text-sm font-semibold text-foreground mb-4">{t('price_range')}</h3>
-        <div className="space-y-3">
+        <div className="space-y-4">
           <div>
-            <label className="text-xs text-muted-foreground">
+            <label className="text-xs text-muted-foreground mb-2 block">
               {t('price_min')}: ${filters.priceMin}
             </label>
             <input
@@ -162,11 +163,11 @@ function FilterSidebar({
               max="500"
               value={filters.priceMin}
               onChange={(e) => handlePriceChange('min', parseInt(e.target.value))}
-              className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer"
+              className="w-full h-2 bg-secondary rounded-full appearance-none cursor-pointer accent-primary shadow-soft [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:shadow-soft-lg [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-110"
             />
           </div>
           <div>
-            <label className="text-xs text-muted-foreground">
+            <label className="text-xs text-muted-foreground mb-2 block">
               {t('price_max')}: ${filters.priceMax}
             </label>
             <input
@@ -175,7 +176,7 @@ function FilterSidebar({
               max="500"
               value={filters.priceMax}
               onChange={(e) => handlePriceChange('max', parseInt(e.target.value))}
-              className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer"
+              className="w-full h-2 bg-secondary rounded-full appearance-none cursor-pointer accent-primary shadow-soft [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:shadow-soft-lg [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-110"
             />
           </div>
         </div>
@@ -336,7 +337,7 @@ function ShopContent() {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Desktop Sidebar */}
           <aside className="hidden lg:block w-64 flex-shrink-0">
-            <div className="sticky top-20">
+            <div className="sticky top-20 bg-background rounded-2xl p-6 shadow-soft">
               <FilterSidebar filters={filters} onFiltersChange={setFilters} />
             </div>
           </aside>
@@ -362,7 +363,7 @@ function ShopContent() {
                   onChange={(e) =>
                     setFilters({ ...filters, sort: e.target.value })
                   }
-                  className="px-3 py-2 rounded-md border border-border bg-background text-sm font-medium text-foreground hover:bg-secondary transition-colors"
+                  className="px-4 py-2 rounded-full border border-border bg-background text-sm font-medium text-foreground hover:bg-secondary transition-all duration-300 shadow-soft hover:shadow-soft-lg cursor-pointer"
                 >
                   {SORT_OPTIONS.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -431,24 +432,35 @@ function ShopContent() {
             {/* Products Grid */}
             {filteredAndSortedProducts.length > 0 ? (
               <>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
-                  {filteredAndSortedProducts.map((product) => (
-                    <ProductCard
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mb-12"
+                >
+                  {filteredAndSortedProducts.map((product, index) => (
+                    <motion.div
                       key={product.id}
-                      id={product.id}
-                      slug={product.slug}
-                      name={product.name}
-                      price={product.price}
-                      originalPrice={product.originalPrice}
-                      image={product.images[0]}
-                      secondImage={product.images[1]}
-                      colors={product.colors}
-                      sizes={product.sizes}
-                      isNew={product.isNew}
-                      badge={product.badge}
-                    />
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.05 }}
+                    >
+                      <ProductCard
+                        id={product.id}
+                        slug={product.slug}
+                        name={product.name}
+                        price={product.price}
+                        originalPrice={product.originalPrice}
+                        image={product.images[0]}
+                        secondImage={product.images[1]}
+                        colors={product.colors}
+                        sizes={product.sizes}
+                        isNew={product.isNew}
+                        badge={product.badge}
+                      />
+                    </motion.div>
                   ))}
-                </div>
+                </motion.div>
 
                 {/* Load More Button */}
                 <div className="flex justify-center">

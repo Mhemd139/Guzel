@@ -179,17 +179,17 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
           {/* Image Gallery */}
           <div>
             {/* Main Image */}
-            <div className="relative h-96 sm:h-[500px] lg:h-[600px] bg-secondary rounded-lg overflow-hidden mb-4 group">
+            <div className="relative h-96 sm:h-[500px] lg:h-[600px] bg-secondary rounded-2xl overflow-hidden mb-4 group shadow-soft">
               <Image
                 src={product.images[mainImageIndex]}
                 alt={product.name}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-105 saturate-110"
                 priority
               />
               {product.badge && (
                 <div className="absolute top-4 start-4">
-                  <Badge variant="default" className="bg-accent text-accent-foreground">
+                  <Badge variant="default" className="bg-accent text-accent-foreground rounded-full">
                     {product.badge}
                   </Badge>
                 </div>
@@ -204,9 +204,9 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                     key={index}
                     onClick={() => setMainImageIndex(index)}
                     className={cn(
-                      'relative h-20 sm:h-24 w-20 sm:w-24 flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all',
+                      'relative h-20 sm:h-24 w-20 sm:w-24 flex-shrink-0 rounded-2xl overflow-hidden border-2 transition-all duration-300 shadow-soft hover:shadow-soft-lg',
                       mainImageIndex === index
-                        ? 'border-foreground'
+                        ? 'border-foreground scale-105 ring-2 ring-primary/30'
                         : 'border-border hover:border-foreground/50'
                     )}
                   >
@@ -284,10 +284,10 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                     key={color.hex}
                     onClick={() => setSelectedColor(color)}
                     className={cn(
-                      'relative w-10 h-10 rounded-full border-2 transition-all',
+                      'relative w-10 h-10 rounded-full border-2 transition-all duration-300 shadow-soft hover:shadow-soft-lg',
                       selectedColor?.hex === color.hex
-                        ? 'border-foreground scale-110'
-                        : 'border-border hover:border-foreground/50'
+                        ? 'border-foreground scale-110 ring-2 ring-primary/30'
+                        : 'border-border hover:border-foreground/50 hover:scale-105'
                     )}
                     style={{ backgroundColor: color.hex }}
                     title={color.name}
@@ -312,10 +312,10 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                     key={size}
                     onClick={() => setSelectedSize(size)}
                     className={cn(
-                      'px-4 py-2 rounded-lg border-2 font-medium text-sm transition-all',
+                      'px-4 py-2 rounded-full border-2 font-medium text-sm transition-all duration-300 shadow-soft hover:shadow-soft-lg',
                       selectedSize === size
-                        ? 'bg-foreground text-background border-foreground'
-                        : 'bg-background border-border text-foreground hover:border-foreground'
+                        ? 'bg-foreground text-background border-foreground scale-105'
+                        : 'bg-background border-border text-foreground hover:border-foreground hover:scale-105'
                     )}
                   >
                     {size}
@@ -332,10 +332,10 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
               <h3 className="text-sm font-semibold text-foreground mb-3">
                 {t('quantity')}
               </h3>
-              <div className="flex items-center border border-border rounded-lg w-fit">
+              <div className="flex items-center border border-border rounded-full w-fit shadow-soft">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="p-2 hover:bg-secondary transition-colors"
+                  className="p-2 hover:bg-secondary transition-all duration-300 rounded-l-full hover:scale-110"
                   aria-label="Decrease quantity"
                 >
                   <Minus className="w-4 h-4" />
@@ -349,7 +349,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                 />
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="p-2 hover:bg-secondary transition-colors"
+                  className="p-2 hover:bg-secondary transition-all duration-300 rounded-r-full hover:scale-110"
                   aria-label="Increase quantity"
                 >
                   <Plus className="w-4 h-4" />
