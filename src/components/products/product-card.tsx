@@ -8,6 +8,8 @@ import { useTranslations } from 'next-intl';
 import { useWishlist } from '@/lib/contexts/wishlist-context';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { QuickViewModal } from '@/components/products/quick-view-modal';
+import { getProductBySlug } from '@/lib/products';
 
 interface ProductCardProps {
   id: string;
@@ -37,9 +39,12 @@ export function ProductCard({
   badge,
 }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const [showQuickView, setShowQuickView] = useState(false);
   const { toggleItem, isInWishlist } = useWishlist();
   const inWishlist = isInWishlist(id);
   const t = useTranslations('product');
+
+  const product = getProductBySlug(slug);
 
   const handleWishlistToggle = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -129,6 +134,7 @@ export function ProductCard({
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
+                setShowQuickView(true);
               }}
             >
               {t('quick_view')}
@@ -169,6 +175,13 @@ export function ProductCard({
           )}
         </div>
       </div>
+
+      {/* Quick View Modal */}
+      <QuickViewModal
+        product={product}
+        isOpen={showQuickView}
+        onClose={() => setShowQuickView(false)}
+      />
     </Link>
   );
 }

@@ -349,6 +349,9 @@
     "added_to_cart_toast": "{name} added to your bag",
     "continue_shopping_text": "Ready to explore more? Check out our latest collections.",
     "item": "item",
-    "items_plural": "items"
+    "items_plural": "items",
+    "free_shipping_unlocked": "🎉 You've unlocked free shipping!",
+    "away_from_free_shipping": "away from free shipping",
+    "view_full_details": "View Full Details"
   }
 }

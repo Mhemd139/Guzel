@@ -77,7 +77,7 @@ export function HeroSection() {
             <Link href="/shop">
               <Button
                 size="lg"
-                className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
+                className="w-full sm:w-auto bg-white hover:bg-white/95 text-foreground font-semibold shadow-soft-lg hover:shadow-[0_8px_30px_rgba(255,255,255,0.3)] hover:scale-105 transition-all duration-300"
               >
                 {t('explore_collection')}
               </Button>
@@ -85,8 +85,7 @@ export function HeroSection() {
             <Link href="/shop?filter=new">
               <Button
                 size="lg"
-                variant="outline"
-                className="w-full sm:w-auto border-2 border-white text-white hover:bg-white/20 bg-white/10 backdrop-blur-sm"
+                className="w-full sm:w-auto bg-white hover:bg-white/95 text-foreground font-semibold shadow-soft-lg hover:shadow-[0_8px_30px_rgba(255,255,255,0.3)] hover:scale-105 transition-all duration-300"
               >
                 {t('new_arrivals')}
               </Button>

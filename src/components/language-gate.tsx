@@ -72,7 +72,7 @@ export function LanguageGate({ children }: { children: React.ReactNode }) {
           </p>
 
           {/* Language Buttons */}
-          <div className="flex flex-col gap-3 mb-8">
+          <div className="flex flex-col gap-4 mb-8">
             {locales.map((locale) => {
               const isRtl = localeDirection[locale] === 'rtl';
               const isSelected = selected === locale;
@@ -81,12 +81,12 @@ export function LanguageGate({ children }: { children: React.ReactNode }) {
                   key={locale}
                   onClick={() => handleSelect(locale)}
                   dir={isRtl ? 'rtl' : 'ltr'}
-                  className={`w-full px-6 py-4 rounded-lg border-2 transition-all duration-200 text-lg font-medium
+                  className={`w-full px-6 py-4 rounded-full border-2 transition-all duration-300 text-lg font-medium shadow-soft
                     ${isRtl ? 'text-right' : 'text-left'}
                     ${
                       isSelected
-                        ? 'border-primary bg-primary/5 text-foreground scale-[1.02]'
-                        : 'border-border text-muted-foreground hover:border-primary/50 hover:text-foreground hover:scale-[1.01]'
+                        ? 'border-primary bg-primary/10 text-foreground scale-110 shadow-soft-lg ring-2 ring-primary/30'
+                        : 'border-border text-muted-foreground hover:border-primary/50 hover:text-foreground hover:scale-105 hover:shadow-soft-lg hover:bg-primary/5'
                     }
                   `}
                 >
@@ -100,11 +100,11 @@ export function LanguageGate({ children }: { children: React.ReactNode }) {
           <button
             onClick={handleContinue}
             disabled={!selected}
-            className={`w-full py-3.5 rounded-lg font-semibold text-base transition-all duration-200
+            className={`w-full py-4 rounded-full font-semibold text-base transition-all duration-300 shadow-soft
               ${
                 selected
-                  ? 'bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer'
-                  : 'bg-muted text-muted-foreground cursor-not-allowed'
+                  ? 'bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 hover:shadow-soft-lg cursor-pointer'
+                  : 'bg-muted text-muted-foreground cursor-not-allowed opacity-50'
               }
             `}
           >
