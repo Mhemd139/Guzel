@@ -6,13 +6,13 @@ import { locales, localeNames, type Locale } from '@/i18n/config';
 
 function getCurrentLocale(): Locale {
   if (typeof document === 'undefined') return 'en';
-  const match = document.cookie.match(/(^| )Güzel_LOCALE=([^;]+)/);
+  const match = document.cookie.match(/(^| )GUZEL_LOCALE=([^;]+)/);
   return (match ? match[2] : 'en') as Locale;
 }
 
 export function LanguageSwitcher({ variant = 'header' }: { variant?: 'header' | 'footer' }) {
   const [open, setOpen] = useState(false);
-  const [current, setCurrent] = useState<Locale>('en');
+  const [current, setCurrent] = useState<Locale>(typeof document !== 'undefined' ? getCurrentLocale() : 'en');
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export function LanguageSwitcher({ variant = 'header' }: { variant?: 'header' | 
   }, []);
 
   const handleSwitch = (locale: Locale) => {
-    document.cookie = `Güzel_LOCALE=${locale};path=/;max-age=31536000;SameSite=Lax`;
+    document.cookie = `GUZEL_LOCALE=${locale};path=/;max-age=31536000;SameSite=Lax`;
     window.location.reload();
   };
 
@@ -49,7 +49,7 @@ export function LanguageSwitcher({ variant = 'header' }: { variant?: 'header' | 
           <span>{localeNames[current]}</span>
         </button>
         {open && (
-          <div className="absolute bottom-full mb-2 start-0 bg-background border border-border rounded-2xl shadow-soft-lg py-2 min-w-[160px] z-50 overflow-hidden">
+          <div className="absolute bottom-full mb-2 start-0 bg-[#F2E8DE] border border-[#CBBFB2] rounded-2xl shadow-soft-lg py-2 min-w-[160px] z-50 overflow-hidden">
             {locales.map((locale) => (
               <button
                 key={locale}
@@ -83,7 +83,7 @@ export function LanguageSwitcher({ variant = 'header' }: { variant?: 'header' | 
         <Globe className="w-5 h-5" />
       </button>
       {open && (
-        <div className="absolute top-full mt-2 end-0 bg-background border border-border rounded-2xl shadow-soft-lg py-2 min-w-[160px] z-50 overflow-hidden">
+        <div className="absolute top-full mt-2 end-0 bg-[#F2E8DE] border border-[#CBBFB2] rounded-2xl shadow-soft-lg py-2 min-w-[160px] z-50 overflow-hidden">
           {locales.map((locale) => (
             <button
               key={locale}

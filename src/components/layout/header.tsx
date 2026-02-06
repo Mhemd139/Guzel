@@ -118,23 +118,35 @@ export function Header() {
               </button>
             </div>
 
-            {/* Mobile Menu */}
-            <div className="md:hidden flex items-center gap-4">
+            {/* Mobile Icons + Menu */}
+            <div className="md:hidden flex items-center gap-2">
               <button
                 onClick={() => setSearchOpen(true)}
-                className="p-2 hover:bg-secondary/50 rounded-full transition-all duration-300"
+                className="p-1.5 hover:bg-secondary/50 rounded-full transition-all duration-300"
                 aria-label={t('search')}
               >
                 <Search className="w-5 h-5" />
               </button>
+              <Link
+                href="/wishlist"
+                className="p-1.5 hover:bg-secondary/50 rounded-full transition-all duration-300 relative"
+                aria-label={t('wishlist')}
+              >
+                <Heart className="w-5 h-5" />
+                {wishlistCount > 0 && (
+                  <span className="absolute -top-0.5 -end-0.5 bg-accent text-accent-foreground text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-semibold shadow-soft">
+                    {wishlistCount}
+                  </span>
+                )}
+              </Link>
               <button
                 onClick={() => setCartOpen(true)}
-                className="p-2 hover:bg-secondary/50 rounded-full transition-all duration-300 relative"
+                className="p-1.5 hover:bg-secondary/50 rounded-full transition-all duration-300 relative"
                 aria-label={t('cart')}
               >
                 <ShoppingBag className="w-5 h-5" />
                 {cartCount > 0 && (
-                  <span className="absolute top-0 end-0 bg-accent text-accent-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center font-semibold shadow-soft">
+                  <span className="absolute -top-0.5 -end-0.5 bg-accent text-accent-foreground text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-semibold shadow-soft">
                     {cartCount}
                   </span>
                 )}

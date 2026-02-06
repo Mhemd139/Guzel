@@ -20,21 +20,21 @@ export function AnimatedHamburger({ isOpen, onClick }: AnimatedHamburgerProps) {
         <motion.span
           animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
           transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-          className="w-full h-0.5 bg-foreground rounded-full mb-1.5 origin-center"
+          className="w-full h-0.5 bg-black rounded-full mb-1.5 origin-center"
         />
         
         {/* Middle Line */}
         <motion.span
           animate={isOpen ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }}
           transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-          className="w-full h-0.5 bg-foreground rounded-full mb-1.5"
+          className="w-full h-0.5 bg-black rounded-full mb-1.5"
         />
         
         {/* Bottom Line */}
         <motion.span
           animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
           transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-          className="w-full h-0.5 bg-foreground rounded-full origin-center"
+          className="w-full h-0.5 bg-black rounded-full origin-center"
         />
       </div>
     </button>

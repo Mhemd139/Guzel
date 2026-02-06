@@ -16,7 +16,7 @@ export function LanguageGate({ children }: { children: React.ReactNode }) {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    const locale = getCookie('Güzel_LOCALE');
+    const locale = getCookie('GUZEL_LOCALE');
     if (locale && locales.includes(locale as Locale)) {
       setShowGate(false);
     } else {
@@ -32,7 +32,7 @@ export function LanguageGate({ children }: { children: React.ReactNode }) {
     if (!selected) return;
     setFadeOut(true);
     setTimeout(() => {
-      document.cookie = `Güzel_LOCALE=${selected};path=/;max-age=31536000;SameSite=Lax`;
+      document.cookie = `GUZEL_LOCALE=${selected};path=/;max-age=31536000;SameSite=Lax`;
       window.location.reload();
     }, 400);
   };

@@ -86,7 +86,8 @@ export function MobileMenu({ navLinks, wishlistCount }: MobileMenuProps) {
               initial="closed"
               animate="open"
               exit="closed"
-              className="fixed top-0 right-0 bottom-0 w-full sm:w-96 bg-background z-50 shadow-soft-lg overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 w-full sm:w-96 bg-[#F2E8DE]/95
+               backdrop-blur-sm z-50 shadow-soft-lg overflow-y-auto"
             >
               <div className="flex flex-col h-full">
                 {/* Header */}

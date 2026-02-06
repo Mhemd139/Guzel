@@ -13,7 +13,7 @@ export function HeroSection() {
   const y = useTransform(scrollY, [0, 500], [0, 150]);
 
   return (
-    <section className="relative w-full h-screen min-h-96 overflow-hidden">
+    <section className="relative w-full h-[75vh] sm:h-[80vh] lg:h-[85vh] min-h-[480px] overflow-hidden bg-[#3D2515]">
       {/* Background Image with Parallax */}
       <motion.div style={{ y }} className="absolute inset-0 w-full h-full">
         <Image
@@ -31,7 +31,7 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -39,7 +39,7 @@ export function HeroSection() {
         >
           {/* Tagline */}
           <div className="space-y-2">
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
@@ -47,7 +47,7 @@ export function HeroSection() {
             >
               {t('hero_tagline')}
             </motion.p>
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
@@ -58,7 +58,7 @@ export function HeroSection() {
           </div>
 
           {/* Subtitle */}
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
@@ -68,7 +68,7 @@ export function HeroSection() {
           </motion.p>
 
           {/* CTA Buttons */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
@@ -95,7 +95,7 @@ export function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
