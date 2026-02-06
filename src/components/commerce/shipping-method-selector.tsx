@@ -39,16 +39,16 @@ export function ShippingMethodSelector({
             <button
               key={method.id}
               onClick={() => onSelect(method.id)}
-              className={`w-full flex items-center gap-4 p-4 rounded-lg border-2 transition-colors text-start ${
+              className={`w-full flex items-center gap-4 p-4 rounded-2xl border transition-all duration-300 text-start group ${
                 isSelected
-                  ? 'border-accent bg-accent/5'
-                  : 'border-border hover:border-accent/50'
+                  ? 'border-primary bg-primary/5 shadow-soft-lg'
+                  : 'border-border hover:border-primary/50 bg-white shadow-soft hover:-translate-y-1'
               }`}
             >
               {/* Radio indicator */}
               <div
-                className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
-                  isSelected ? 'border-accent bg-accent' : 'border-border'
+                className={`w-5 h-5 rounded-full border flex items-center justify-center flex-shrink-0 transition-colors ${
+                  isSelected ? 'border-primary bg-primary' : 'border-border group-hover:border-primary/50'
                 }`}
               >
                 {isSelected && <Check className="w-3 h-3 text-white" />}

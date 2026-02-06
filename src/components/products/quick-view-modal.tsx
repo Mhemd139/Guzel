@@ -107,7 +107,7 @@ export function QuickViewModal({ product, isOpen, onClose }: QuickViewModalProps
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/20 backdrop-blur-[2px] z-50"
             onClick={onClose}
           />
 
@@ -118,7 +118,7 @@ export function QuickViewModal({ product, isOpen, onClose }: QuickViewModalProps
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="bg-background rounded-2xl shadow-soft-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto pointer-events-auto"
+              className="bg-[#F2E8DE] rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto pointer-events-auto"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -277,11 +277,16 @@ export function QuickViewModal({ product, isOpen, onClose }: QuickViewModalProps
                         <Minus className="w-4 h-4" />
                       </button>
                       <input
-                        type="number"
+                        type="text"
+                        inputMode="numeric"
+                        pattern="[0-9]*"
                         value={quantity}
-                        onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+                        onChange={(e) => {
+                          const val = parseInt(e.target.value);
+                          if (!isNaN(val) && val >= 1) setQuantity(val);
+                          else if (e.target.value === '') setQuantity(1);
+                        }}
                         className="w-12 text-center border-x border-border bg-transparent outline-none"
-                        min="1"
                       />
                       <button
                         onClick={() => setQuantity(quantity + 1)}
@@ -317,7 +322,7 @@ export function QuickViewModal({ product, isOpen, onClose }: QuickViewModalProps
                     className="text-sm text-accent hover:text-accent/80 transition-colors text-center underline"
                     onClick={onClose}
                   >
-                    {t('view_full_details')}
+                    {tCommerce('view_full_details')}
                   </Link>
                 </div>
               </div>

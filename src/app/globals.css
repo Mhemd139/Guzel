@@ -50,78 +50,80 @@
 :root {
   --radius: 1rem;
 
-  /* Guzel Feminine Brand Colors - Soft rose, blush, and cream palette */
-  --background: 30 50% 98%;  /* Warm off-white #FFF9F5 */
-  --foreground: 0 0% 24%;    /* Warm charcoal #3D3D3D */
-  --card: 30 50% 98%;
-  --card-foreground: 0 0% 24%;
-  --popover: 30 50% 98%;
-  --popover-foreground: 0 0% 24%;
-  --primary: 340 45% 82%;    /* Soft rose #E8A0BF */
-  --primary-foreground: 0 0% 100%;
-  --secondary: 10 20% 84%;   /* Warm nude/mauve #C9A9A6 */
-  --secondary-foreground: 0 0% 24%;
-  --muted: 30 30% 92%;       /* Soft blush gray #E8DCD5 */
-  --muted-foreground: 0 0% 45%;
-  --accent: 43 75% 53%;      /* Dusty gold #D4AF37 */
-  --accent-foreground: 0 0% 100%;
+  /* Güzel Brand Colors — derived from logo */
+  /* Logo beige: ~#DCC5AF  |  Logo brown: ~#8B5A34 */
+  --background: 28 38% 93%;   /* #F2E8DE — airy warm off-white */
+  --foreground: 22 45% 28%;   /* #67401A — deep brown for body text */
+  --card: 28 36% 91%;         /* #ECE0D3 */
+  --card-foreground: 22 45% 28%;
+  --popover: 28 38% 93%;
+  --popover-foreground: 22 45% 28%;
+  --primary: 22 45% 37%;      /* #894F2A — logo cognac brown */
+  --primary-foreground: 28 40% 96%; /* #FAF5F0 */
+  --secondary: 28 30% 83%;    /* #DDD0C3 — close to logo beige */
+  --secondary-foreground: 22 45% 28%;
+  --muted: 28 18% 79%;        /* #D1C7BD */
+  --muted-foreground: 22 16% 50%; /* #7D6B5E */
+  --accent: 22 52% 44%;       /* #AB6432 — warm brown for links/CTAs */
+  --accent-foreground: 28 40% 96%;
   --destructive: 0 84% 60%;
-  --border: 30 30% 92%;      /* Soft blush gray #E8DCD5 */
-  --input: 30 30% 92%;
-  --ring: 340 45% 82%;
+  --border: 28 20% 76%;       /* #CBBFB2 */
+  --input: 28 20% 76%;
+  --ring: 22 45% 37%;
 
   /* Font families - Elegant and feminine */
   --font-sans: var(--font-sans-base), sans-serif;
-  --font-serif: 'Playfair Display', 'Cormorant Garamond', serif;
+  --font-serif: var(--font-serif), 'Playfair Display', serif;
+  --font-serif-secondary: var(--font-serif-secondary), 'Cormorant Garamond', serif;
   --font-mono: 'Courier New', monospace;
   --font-sans-base: 'DM Sans';
 
   /* Sidebar colors */
-  --sidebar: 30 50% 98%;
-  --sidebar-foreground: 0 0% 24%;
-  --sidebar-primary: 340 45% 82%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 43 75% 53%;
-  --sidebar-accent-foreground: 0 0% 100%;
-  --sidebar-border: 30 30% 92%;
-  --sidebar-ring: 340 45% 82%;
+  --sidebar: 28 38% 96%;
+  --sidebar-foreground: 22 45% 28%;
+  --sidebar-primary: 22 45% 37%;
+  --sidebar-primary-foreground: 28 40% 96%;
+  --sidebar-accent: 22 52% 44%;
+  --sidebar-accent-foreground: 28 40% 96%;
+  --sidebar-border: 28 20% 86%;
+  --sidebar-ring: 22 45% 37%;
 
   /* Chart colors */
-  --chart-1: 340 45% 82%;
-  --chart-2: 10 20% 84%;
-  --chart-3: 43 75% 53%;
-  --chart-4: 30 30% 92%;
-  --chart-5: 0 0% 45%;
+  --chart-1: 22 45% 37%;
+  --chart-2: 28 30% 78%;
+  --chart-3: 22 52% 44%;
+  --chart-4: 28 20% 86%;
+  --chart-5: 22 16% 50%;
 }
 
 .dark {
-  --background: 30 10% 15%;
-  --foreground: 30 20% 95%;
-  --card: 30 10% 20%;
-  --card-foreground: 30 20% 95%;
-  --popover: 30 10% 20%;
-  --popover-foreground: 30 20% 95%;
-  --primary: 30 30% 70%;
-  --primary-foreground: 30 10% 15%;
-  --secondary: 30 15% 25%;
-  --secondary-foreground: 30 20% 95%;
-  --muted: 30 10% 25%;
-  --muted-foreground: 30 5% 60%;
-  --accent: 15 60% 65%;
-  --accent-foreground: 0 0% 15%;
+  --background: 24 12% 12%;
+  --foreground: 28 25% 92%;
+  --card: 24 12% 16%;
+  --card-foreground: 28 25% 92%;
+  --popover: 24 12% 16%;
+  --popover-foreground: 28 25% 92%;
+  --primary: 22 40% 65%;
+  --primary-foreground: 24 12% 12%;
+  --secondary: 24 10% 22%;
+  --secondary-foreground: 28 25% 92%;
+  --muted: 24 8% 22%;
+  --muted-foreground: 28 10% 58%;
+  --accent: 22 48% 58%;
+  --accent-foreground: 24 12% 12%;
   --destructive: 0 84% 60%;
-  --border: 30 15% 25%;
-  --input: 30 10% 20%;
-  --ring: 30 30% 70%;
+  --border: 24 10% 24%;
+  --input: 24 10% 20%;
+  --ring: 22 40% 65%;
 
-  --sidebar: 30 10% 15%;
-  --sidebar-foreground: 30 20% 95%;
-  --sidebar-primary: 30 30% 70%;
-  --sidebar-primary-foreground: 30 10% 15%;
-  --sidebar-accent: 15 60% 65%;
-  --sidebar-accent-foreground: 0 0% 15%;
-  --sidebar-border: 30 15% 25%;
-  --sidebar-ring: 30 30% 70%;
+  --sidebar: 24 12% 12%;
+  --sidebar-foreground: 28 25% 92%;
+  --sidebar-primary: 22 40% 65%;
+  --sidebar-primary-foreground: 24 12% 12%;
+  --sidebar-accent: 22 48% 58%;
+  --sidebar-accent-foreground: 24 12% 12%;
+  --sidebar-border: 24 10% 24%;
+  --sidebar-ring: 22 40% 65%;
 }
 
 /* RTL font switching */
@@ -181,7 +183,7 @@
 
   /* Hover glow effect for buttons */
   .hover-glow:hover {
-    box-shadow: 0 0 20px rgba(232, 160, 191, 0.4);
+    box-shadow: 0 0 20px rgba(139, 90, 52, 0.3);
   }
 
   /* Image hover zoom */
@@ -197,3 +199,54 @@
     transform: scale(1.05);
   }
 }
+
+/* Shimmer animation for skeleton loaders */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Accessibility - Focus Indicators */
+@layer utilities {
+  /* Rose-colored focus ring for interactive elements */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  /* Enhanced focus for buttons */
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px hsla(var(--primary) / 0.1);
+  }
+
+  /* Skip to main content link */
+  .skip-to-main {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    padding: 0.75rem 1.5rem;
+    border-radius: 0 0 0.5rem 0;
+    font-weight: 600;
+    z-index: 100;
+    transition: top 0.3s;
+  }
+
+  .skip-to-main:focus {
+    top: 0;
+  }
+}
+

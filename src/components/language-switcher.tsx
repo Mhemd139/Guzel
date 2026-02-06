@@ -6,7 +6,7 @@ import { locales, localeNames, type Locale } from '@/i18n/config';
 
 function getCurrentLocale(): Locale {
   if (typeof document === 'undefined') return 'en';
-  const match = document.cookie.match(/(^| )GUZEL_LOCALE=([^;]+)/);
+  const match = document.cookie.match(/(^| )Güzel_LOCALE=([^;]+)/);
   return (match ? match[2] : 'en') as Locale;
 }
 
@@ -30,7 +30,7 @@ export function LanguageSwitcher({ variant = 'header' }: { variant?: 'header' | 
   }, []);
 
   const handleSwitch = (locale: Locale) => {
-    document.cookie = `GUZEL_LOCALE=${locale};path=/;max-age=31536000;SameSite=Lax`;
+    document.cookie = `Güzel_LOCALE=${locale};path=/;max-age=31536000;SameSite=Lax`;
     window.location.reload();
   };
 

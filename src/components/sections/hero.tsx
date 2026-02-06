@@ -18,7 +18,7 @@ export function HeroSection() {
       <motion.div style={{ y }} className="absolute inset-0 w-full h-full">
         <Image
           src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1920&q=80"
-          alt="Guzel Hero - Elegant Woman in Fashion"
+          alt="Güzel Hero - Elegant Woman in Fashion"
           fill
           className="object-cover brightness-105 saturate-110"
           priority

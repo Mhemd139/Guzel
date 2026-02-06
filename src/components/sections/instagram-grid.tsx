@@ -17,32 +17,32 @@ const instagramPosts: InstagramPost[] = [
   {
     id: '1',
     image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&q=80',
-    alt: 'Guzel Style - Look 1',
+    alt: 'Güzel Style - Look 1',
   },
   {
     id: '2',
     image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&q=80',
-    alt: 'Guzel Style - Look 2',
+    alt: 'Güzel Style - Look 2',
   },
   {
     id: '3',
     image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&q=80',
-    alt: 'Guzel Style - Look 3',
+    alt: 'Güzel Style - Look 3',
   },
   {
     id: '4',
     image: 'https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=400&q=80',
-    alt: 'Guzel Style - Look 4',
+    alt: 'Güzel Style - Look 4',
   },
   {
     id: '5',
     image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&q=80',
-    alt: 'Guzel Style - Look 5',
+    alt: 'Güzel Style - Look 5',
   },
   {
     id: '6',
     image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400&q=80',
-    alt: 'Guzel Style - Look 6',
+    alt: 'Güzel Style - Look 6',
   },
 ];
 

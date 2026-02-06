@@ -1,10 +1,10 @@
-# Guzel - Women's Fashion E-Commerce Website
+# Güzel - Women's Fashion E-Commerce Website
 
-A modern, elegant e-commerce platform for a curated women's fashion boutique called Guzel. Built with Next.js 15, Tailwind CSS v4, and TypeScript.
+A modern, elegant e-commerce platform for a curated women's fashion boutique called Güzel. Built with Next.js 15, Tailwind CSS v4, and TypeScript.
 
 ## 🎨 Brand Overview
 
-**Guzel** is a contemporary women's fashion brand targeting women aged 22-40 who value:
+**Güzel** is a contemporary women's fashion brand targeting women aged 22-40 who value:
 - **Curated Style**: Handpicked collections with editorial sensibility
 - **Quality Fabrics**: Premium materials and sustainable production
 - **Effortless Sophistication**: Minimal but warm aesthetic

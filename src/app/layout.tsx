@@ -16,14 +16,14 @@ import { BackToTop } from "@/components/ui/back-to-top";
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-playfair",
+  variable: "--font-serif",
   display: "swap",
 });
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-serif",
+  variable: "--font-serif-secondary",
   display: "swap",
 });
 
@@ -50,23 +50,23 @@ const notoHebrew = Noto_Sans_Hebrew({
 
 export const metadata: Metadata = {
   title: {
-    default: "Guzel | Curated Style for the Modern Woman",
-    template: "%s | Guzel",
+    default: "Güzel | Curated Style for the Modern Woman",
+    template: "%s | Güzel",
   },
   description:
-    "Discover Guzel - curated fashion for the modern woman. Premium fabrics, ethical production, effortless sophistication.",
-  metadataBase: new URL("https://Guzel-shop.vercel.app"),
+    "Discover Güzel - curated fashion for the modern woman. Premium fabrics, ethical production, effortless sophistication.",
+  metadataBase: new URL("https://Güzel-shop.vercel.app"),
   openGraph: {
-    title: "Guzel | Curated Style for the Modern Woman",
+    title: "Güzel | Curated Style for the Modern Woman",
     description:
-      "Discover Guzel - curated fashion for the modern woman. Premium fabrics, ethical production, effortless sophistication.",
-    url: "https://Guzel-shop.vercel.app",
-    siteName: "Guzel",
+      "Discover Güzel - curated fashion for the modern woman. Premium fabrics, ethical production, effortless sophistication.",
+    url: "https://Güzel-shop.vercel.app",
+    siteName: "Güzel",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Guzel",
+    title: "Güzel",
     description: "Curated fashion for the modern woman",
   },
   robots: { index: true, follow: true },
@@ -78,7 +78,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const cookieStore = await cookies();
-  const locale = (cookieStore.get("GUZEL_LOCALE")?.value || "en") as Locale;
+  const locale = (cookieStore.get("Güzel_LOCALE")?.value || "en") as Locale;
   const direction = localeDirection[locale];
   const messages = await getMessages();
 
@@ -98,7 +98,7 @@ export default async function RootLayout({
               <WishlistProvider>
                 <ToastProvider>
                   <Header />
-                  <main>{children}</main>
+                  <main id="main-content">{children}</main>
                   <Footer />
                   <BackToTop />
                 </ToastProvider>

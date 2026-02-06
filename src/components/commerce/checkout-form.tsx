@@ -55,120 +55,156 @@ export function CheckoutForm({ defaultValues, onSubmit }: CheckoutFormProps) {
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       {/* Name row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label className="text-sm font-medium text-foreground mb-1.5 block">
+        <div className="space-y-1.5">
+          <label className="text-sm font-medium text-foreground ml-1">
             {t('shipping_first_name')} *
           </label>
-          <Input {...register('firstName')} />
+          <Input 
+            {...register('firstName')} 
+            className={`rounded-full shadow-soft focus:ring-primary/20 ${errors.firstName ? 'border-red-500 focus:ring-red-200' : ''}`}
+          />
           {errors.firstName && (
-            <p className="text-sm text-red-600 mt-1">{errors.firstName.message}</p>
+            <p className="text-sm text-red-500 ml-1 animate-in slide-in-from-top-1 fade-in duration-200">{errors.firstName.message}</p>
           )}
         </div>
-        <div>
-          <label className="text-sm font-medium text-foreground mb-1.5 block">
+        <div className="space-y-1.5">
+          <label className="text-sm font-medium text-foreground ml-1">
             {t('shipping_last_name')} *
           </label>
-          <Input {...register('lastName')} />
+          <Input 
+            {...register('lastName')} 
+            className={`rounded-full shadow-soft focus:ring-primary/20 ${errors.lastName ? 'border-red-500 focus:ring-red-200' : ''}`}
+          />
           {errors.lastName && (
-            <p className="text-sm text-red-600 mt-1">{errors.lastName.message}</p>
+            <p className="text-sm text-red-500 ml-1 animate-in slide-in-from-top-1 fade-in duration-200">{errors.lastName.message}</p>
           )}
         </div>
       </div>
 
       {/* Email & Phone */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label className="text-sm font-medium text-foreground mb-1.5 block">
+        <div className="space-y-1.5">
+          <label className="text-sm font-medium text-foreground ml-1">
             {t('shipping_email')} *
           </label>
-          <Input type="email" {...register('email')} />
+          <Input 
+            type="email" 
+            {...register('email')} 
+            className={`rounded-full shadow-soft focus:ring-primary/20 ${errors.email ? 'border-red-500 focus:ring-red-200' : ''}`}
+          />
           {errors.email && (
-            <p className="text-sm text-red-600 mt-1">{errors.email.message}</p>
+            <p className="text-sm text-red-500 ml-1 animate-in slide-in-from-top-1 fade-in duration-200">{errors.email.message}</p>
           )}
         </div>
-        <div>
-          <label className="text-sm font-medium text-foreground mb-1.5 block">
+        <div className="space-y-1.5">
+          <label className="text-sm font-medium text-foreground ml-1">
             {t('shipping_phone')} *
           </label>
-          <Input type="tel" {...register('phone')} />
+          <Input 
+            type="tel" 
+            {...register('phone')} 
+            className={`rounded-full shadow-soft focus:ring-primary/20 ${errors.phone ? 'border-red-500 focus:ring-red-200' : ''}`}
+          />
           {errors.phone && (
-            <p className="text-sm text-red-600 mt-1">{errors.phone.message}</p>
+            <p className="text-sm text-red-500 ml-1 animate-in slide-in-from-top-1 fade-in duration-200">{errors.phone.message}</p>
           )}
         </div>
       </div>
 
       {/* Address */}
-      <div>
-        <label className="text-sm font-medium text-foreground mb-1.5 block">
+      <div className="space-y-1.5">
+        <label className="text-sm font-medium text-foreground ml-1">
           {t('shipping_address1')} *
         </label>
-        <Input {...register('address1')} />
+        <Input 
+          {...register('address1')} 
+          className={`rounded-full shadow-soft focus:ring-primary/20 ${errors.address1 ? 'border-red-500 focus:ring-red-200' : ''}`}
+        />
         {errors.address1 && (
-          <p className="text-sm text-red-600 mt-1">{errors.address1.message}</p>
+          <p className="text-sm text-red-500 ml-1 animate-in slide-in-from-top-1 fade-in duration-200">{errors.address1.message}</p>
         )}
       </div>
-      <div>
-        <label className="text-sm font-medium text-foreground mb-1.5 block">
+      <div className="space-y-1.5">
+        <label className="text-sm font-medium text-foreground ml-1">
           {t('shipping_address2')}
         </label>
-        <Input {...register('address2')} />
+        <Input 
+          {...register('address2')} 
+          className="rounded-full shadow-soft focus:ring-primary/20"
+        />
       </div>
 
       {/* City, State, ZIP */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div>
-          <label className="text-sm font-medium text-foreground mb-1.5 block">
+        <div className="space-y-1.5">
+          <label className="text-sm font-medium text-foreground ml-1">
             {t('shipping_city')} *
           </label>
-          <Input {...register('city')} />
+          <Input 
+            {...register('city')} 
+            className={`rounded-full shadow-soft focus:ring-primary/20 ${errors.city ? 'border-red-500 focus:ring-red-200' : ''}`}
+          />
           {errors.city && (
-            <p className="text-sm text-red-600 mt-1">{errors.city.message}</p>
+            <p className="text-sm text-red-500 ml-1 animate-in slide-in-from-top-1 fade-in duration-200">{errors.city.message}</p>
           )}
         </div>
-        <div>
-          <label className="text-sm font-medium text-foreground mb-1.5 block">
+        <div className="space-y-1.5">
+          <label className="text-sm font-medium text-foreground ml-1">
             {t('shipping_state')} *
           </label>
-          <Input {...register('state')} />
+          <Input 
+            {...register('state')} 
+            className={`rounded-full shadow-soft focus:ring-primary/20 ${errors.state ? 'border-red-500 focus:ring-red-200' : ''}`}
+          />
           {errors.state && (
-            <p className="text-sm text-red-600 mt-1">{errors.state.message}</p>
+            <p className="text-sm text-red-500 ml-1 animate-in slide-in-from-top-1 fade-in duration-200">{errors.state.message}</p>
           )}
         </div>
-        <div>
-          <label className="text-sm font-medium text-foreground mb-1.5 block">
+        <div className="space-y-1.5">
+          <label className="text-sm font-medium text-foreground ml-1">
             {t('shipping_zip')} *
           </label>
-          <Input {...register('zipCode')} />
+          <Input 
+            {...register('zipCode')} 
+            className={`rounded-full shadow-soft focus:ring-primary/20 ${errors.zipCode ? 'border-red-500 focus:ring-red-200' : ''}`}
+          />
           {errors.zipCode && (
-            <p className="text-sm text-red-600 mt-1">{errors.zipCode.message}</p>
+            <p className="text-sm text-red-500 ml-1 animate-in slide-in-from-top-1 fade-in duration-200">{errors.zipCode.message}</p>
           )}
         </div>
       </div>
 
       {/* Country */}
-      <div>
-        <label className="text-sm font-medium text-foreground mb-1.5 block">
+      <div className="space-y-1.5">
+        <label className="text-sm font-medium text-foreground ml-1">
           {t('shipping_country')} *
         </label>
-        <select
-          {...register('country')}
-          className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-        >
-          {countries.map((c) => (
-            <option key={c.code} value={c.code}>
-              {c.name}
-            </option>
-          ))}
-        </select>
+        <div className="relative">
+          <select
+            {...register('country')}
+            className={`w-full rounded-full border border-input bg-background px-4 py-2 text-sm shadow-soft focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none ${errors.country ? 'border-red-500 focus:ring-red-200' : ''}`}
+          >
+            {countries.map((c) => (
+              <option key={c.code} value={c.code}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground">
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        </div>
         {errors.country && (
-          <p className="text-sm text-red-600 mt-1">{errors.country.message}</p>
+          <p className="text-sm text-red-500 ml-1 animate-in slide-in-from-top-1 fade-in duration-200">{errors.country.message}</p>
         )}
       </div>
 
-      <Button type="submit" className="w-full mt-6" size="lg">
+      <Button type="submit" className="w-full mt-6 shadow-soft hover:shadow-soft-lg transition-all duration-300 hover:scale-[1.02]" size="lg">
         {t('continue_to_delivery')}
       </Button>
     </form>

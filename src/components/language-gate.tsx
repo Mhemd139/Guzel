@@ -16,7 +16,7 @@ export function LanguageGate({ children }: { children: React.ReactNode }) {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    const locale = getCookie('GUZEL_LOCALE');
+    const locale = getCookie('Güzel_LOCALE');
     if (locale && locales.includes(locale as Locale)) {
       setShowGate(false);
     } else {
@@ -32,7 +32,7 @@ export function LanguageGate({ children }: { children: React.ReactNode }) {
     if (!selected) return;
     setFadeOut(true);
     setTimeout(() => {
-      document.cookie = `GUZEL_LOCALE=${selected};path=/;max-age=31536000;SameSite=Lax`;
+      document.cookie = `Güzel_LOCALE=${selected};path=/;max-age=31536000;SameSite=Lax`;
       window.location.reload();
     }, 400);
   };
@@ -57,12 +57,13 @@ export function LanguageGate({ children }: { children: React.ReactNode }) {
       >
         <div className="text-center px-6 max-w-md w-full">
           {/* Brand Name */}
-          <h1 className="text-5xl sm:text-6xl font-serif font-bold text-foreground mb-3 tracking-tight">
-            Guzel
+          {/* Brand Name */}
+          <h1 className="text-5xl sm:text-7xl font-serif font-bold text-foreground mb-4 tracking-tight">
+            Güzel
           </h1>
 
           {/* Tagline */}
-          <p className="text-sm sm:text-base text-muted-foreground mb-12">
+          <p className="text-lg sm:text-xl text-muted-foreground mb-12 font-light">
             {t('tagline')}
           </p>
 

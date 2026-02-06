@@ -1,7 +1,8 @@
 'use client';
 
-import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react';
-import { X } from 'lucide-react';
+import React, { createContext, useContext, useCallback, ReactNode } from 'react';
+import { toast as sonnerToast } from 'sonner';
+import { Toaster } from '@/components/ui/sonner';
 import Image from 'next/image';
 
 interface Toast {
@@ -27,57 +28,40 @@ export function useToast() {
 }
 
 export function ToastProvider({ children }: { children: ReactNode }) {
-  const [toasts, setToasts] = useState<Toast[]>([]);
-
-  const removeToast = useCallback((id: string) => {
-    setToasts((prev) => prev.filter((t) => t.id !== id));
-  }, []);
-
   const addToast = useCallback(
-    (toast: Omit<Toast, 'id'>) => {
-      const id = Date.now().toString() + Math.random().toString(36).slice(2);
-      const newToast = { ...toast, id };
-      setToasts((prev) => [...prev.slice(-4), newToast]);
+    ({ message, type, image, duration }: Omit<Toast, 'id'>) => {
+      const options = {
+        duration: duration || 4000,
+      };
 
-      setTimeout(() => {
-        removeToast(id);
-      }, toast.duration || 4000);
+      // Custom content with image if present
+      const content = image ? (
+        <div className="flex items-center gap-3">
+          <div className="relative w-10 h-10 rounded overflow-hidden flex-shrink-0">
+            <Image src={image} alt="" fill className="object-cover" sizes="40px" />
+          </div>
+          <p className="text-sm font-medium">{message}</p>
+        </div>
+      ) : message;
+
+      switch (type) {
+        case 'success':
+          sonnerToast.success(content, options);
+          break;
+        case 'error':
+          sonnerToast.error(content, options);
+          break;
+        default:
+          sonnerToast(content, options);
+      }
     },
-    [removeToast]
+    []
   );
 
   return (
     <ToastContext.Provider value={{ addToast }}>
       {children}
-      {/* Toast container */}
-      <div className="fixed bottom-4 end-4 z-[100] flex flex-col gap-2 max-w-sm w-full pointer-events-none">
-        {toasts.map((toast) => (
-          <div
-            key={toast.id}
-            className={`pointer-events-auto flex items-center gap-3 p-4 rounded-lg shadow-lg border animate-in slide-in-from-bottom-5 fade-in duration-300 ${
-              toast.type === 'error'
-                ? 'bg-red-50 border-red-200 text-red-800'
-                : toast.type === 'success'
-                  ? 'bg-green-50 border-green-200 text-green-800'
-                  : 'bg-white border-border text-foreground'
-            }`}
-          >
-            {toast.image && (
-              <div className="relative w-10 h-10 rounded overflow-hidden flex-shrink-0">
-                <Image src={toast.image} alt="" fill className="object-cover" sizes="40px" />
-              </div>
-            )}
-            <p className="text-sm font-medium flex-1">{toast.message}</p>
-            <button
-              onClick={() => removeToast(toast.id)}
-              className="flex-shrink-0 p-1 rounded hover:bg-black/5 transition-colors"
-              aria-label="Close"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-        ))}
-      </div>
+      <Toaster />
     </ToastContext.Provider>
   );
 }

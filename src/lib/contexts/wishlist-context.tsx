@@ -4,7 +4,7 @@ import React, { createContext, useContext, useReducer, useEffect, ReactNode, use
 import { WishlistItem, CartItem } from '@/lib/types/commerce';
 import { setCookie, getCookie, deleteCookie } from '@/lib/commerce/utils';
 
-const COOKIE_NAME = 'GUZEL_WISHLIST';
+const COOKIE_NAME = 'Güzel_WISHLIST';
 
 type WishlistAction =
   | { type: 'ADD_ITEM'; payload: WishlistItem }

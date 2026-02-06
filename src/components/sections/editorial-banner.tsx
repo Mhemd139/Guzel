@@ -32,7 +32,7 @@ export function EditorialBannerSection() {
             <motion.div style={{ y }} className="w-full h-full">
               <Image
                 src="https://images.unsplash.com/photo-1467043237213-65f2da53396f?w=800&q=80"
-                alt="Guzel Editorial Collection"
+                alt="Güzel Editorial Collection"
                 fill
                 className="object-cover brightness-105 saturate-110"
                 sizes="(max-width: 1024px) 100vw, 50vw"

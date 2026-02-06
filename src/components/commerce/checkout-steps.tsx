@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
@@ -19,50 +20,61 @@ export function CheckoutSteps({ currentStep, onStepClick }: CheckoutStepsProps) 
   ];
 
   return (
-    <div className="flex items-center justify-center gap-0 w-full max-w-lg mx-auto">
-      {steps.map((step, index) => {
-        const isCompleted = currentStep > step.id;
-        const isCurrent = currentStep === step.id;
+    <div className="w-full max-w-2xl mx-auto">
+      <div className="relative flex items-center justify-between">
+        {/* Background Line */}
+        <div className="absolute top-1/2 left-0 w-full h-1 bg-secondary -translate-y-1/2 rounded-full z-0" />
+        
+        {/* Animated Progress Line */}
+        <motion.div 
+          className="absolute top-1/2 left-0 h-1 bg-primary -translate-y-1/2 rounded-full z-0"
+          initial={{ width: '0%' }}
+          animate={{ width: `${((currentStep - 1) / (steps.length - 1)) * 100}%` }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        />
 
-        return (
-          <React.Fragment key={step.id}>
-            {/* Step indicator */}
-            <button
-              onClick={() => isCompleted && onStepClick(step.id)}
-              disabled={!isCompleted}
-              className={`flex items-center gap-2 ${isCompleted ? 'cursor-pointer' : 'cursor-default'}`}
-            >
-              <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
+        {steps.map((step) => {
+          const isCompleted = currentStep > step.id;
+          const isCurrent = currentStep === step.id;
+
+          return (
+            <div key={step.id} className="relative z-10 flex flex-col items-center gap-2">
+              <motion.button
+                onClick={() => isCompleted && onStepClick(step.id)}
+                disabled={!isCompleted}
+                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-4 transition-colors duration-300 shadow-soft ${
                   isCompleted
-                    ? 'bg-accent text-white'
+                    ? 'bg-primary border-primary text-white cursor-pointer'
                     : isCurrent
-                      ? 'bg-accent text-white'
-                      : 'bg-secondary text-muted-foreground'
+                      ? 'bg-background border-primary text-primary'
+                      : 'bg-background border-secondary text-muted-foreground cursor-default'
                 }`}
+                whileHover={isCompleted ? { scale: 1.1 } : {}}
+                animate={isCurrent ? { scale: 1.1, boxShadow: "0 0 0 4px rgba(139, 90, 52, 0.2)" } : { scale: 1, boxShadow: "none" }}
               >
-                {isCompleted ? <Check className="w-4 h-4" /> : step.id}
-              </div>
+                {isCompleted ? (
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  >
+                    <Check className="w-5 h-5" strokeWidth={3} />
+                  </motion.div>
+                ) : (
+                  step.id
+                )}
+              </motion.button>
               <span
-                className={`text-sm font-medium hidden sm:block ${
-                  isCurrent || isCompleted ? 'text-foreground' : 'text-muted-foreground'
+                className={`text-sm font-medium absolute top-full mt-2 w-32 text-center transition-colors duration-300 ${
+                  isCurrent ? 'text-foreground font-semibold' : 'text-muted-foreground'
                 }`}
               >
                 {step.label}
               </span>
-            </button>
-
-            {/* Connector line */}
-            {index < steps.length - 1 && (
-              <div
-                className={`flex-1 h-0.5 mx-3 ${
-                  currentStep > step.id ? 'bg-accent' : 'bg-secondary'
-                }`}
-              />
-            )}
-          </React.Fragment>
-        );
-      })}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

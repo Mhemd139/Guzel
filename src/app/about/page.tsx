@@ -6,9 +6,9 @@ import { Leaf, Award, Users } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 
 export const metadata: Metadata = {
-  title: 'About Guzel',
+  title: 'About Güzel',
   description:
-    'Discover Guzel\'s story - our mission to create sustainable, high-quality fashion for the modern woman.',
+    'Discover Güzel\'s story - our mission to create sustainable, high-quality fashion for the modern woman.',
 };
 
 export default async function AboutPage() {
@@ -20,7 +20,7 @@ export default async function AboutPage() {
       <div className="relative h-96 sm:h-[500px] lg:h-[600px] bg-secondary overflow-hidden flex items-center justify-center">
         <Image
           src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&q=80"
-          alt="Guzel - Our Story"
+          alt="Güzel - Our Story"
           fill
           className="object-cover opacity-40"
         />
@@ -41,7 +41,7 @@ export default async function AboutPage() {
           <div className="relative h-96 sm:h-[500px] rounded-lg overflow-hidden">
             <Image
               src="https://images.unsplash.com/photo-1467043237213-65f2da53396f?w=800&q=80"
-              alt="Guzel Design Studio"
+              alt="Güzel Design Studio"
               fill
               className="object-cover"
             />
@@ -140,7 +140,7 @@ export default async function AboutPage() {
             <div className="relative h-96 sm:h-[500px] rounded-lg overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80"
-                alt="Elena Rivera, Guzel Founder"
+                alt="Elena Rivera, Güzel Founder"
                 fill
                 className="object-cover"
               />

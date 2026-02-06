@@ -5,17 +5,19 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { useCart } from '@/lib/contexts/cart-context';
 import { useWishlist } from '@/lib/contexts/wishlist-context';
-import { Menu, Heart, ShoppingBag, Search, User } from 'lucide-react';
+import { Heart, ShoppingBag, Search, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { CartDrawer } from '@/components/commerce/cart-drawer';
+import { MobileMenu } from '@/components/layout/mobile-menu';
+import { SearchModal } from '@/components/layout/search-modal';
 
 export function Header() {
   const t = useTranslations('nav');
   const tHome = useTranslations('home');
   const [isScrolled, setIsScrolled] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const { itemCount: cartCount } = useCart();
   const { itemCount: wishlistCount } = useWishlist();
 
@@ -36,6 +38,10 @@ export function Header() {
 
   return (
     <>
+      <a href="#main-content" className="skip-to-main">
+        {t('skip_to_content')}
+      </a>
+
       {/* Announcement Bar */}
       <div className="bg-primary text-primary-foreground py-2 text-center text-sm">
         {tHome('announcement_1')} • {tHome('announcement_2')}
@@ -56,7 +62,7 @@ export function Header() {
               href="/"
               className="flex-shrink-0 font-serif text-2xl font-bold text-foreground tracking-tight hover:opacity-75 transition-opacity"
             >
-              Guzel
+              Güzel
             </Link>
 
             {/* Desktop Navigation */}
@@ -75,7 +81,11 @@ export function Header() {
 
             {/* Desktop Icons */}
             <div className="hidden md:flex items-center gap-6">
-              <button className="p-2 hover:bg-secondary/50 rounded-full transition-all duration-300" aria-label={t('search')}>
+              <button 
+                onClick={() => setSearchOpen(true)}
+                className="p-2 hover:bg-secondary/50 rounded-full transition-all duration-300" 
+                aria-label={t('search')}
+              >
                 <Search className="w-5 h-5" />
               </button>
               <LanguageSwitcher variant="header" />
@@ -111,65 +121,33 @@ export function Header() {
             {/* Mobile Menu */}
             <div className="md:hidden flex items-center gap-4">
               <button
+                onClick={() => setSearchOpen(true)}
+                className="p-2 hover:bg-secondary/50 rounded-full transition-all duration-300"
+                aria-label={t('search')}
+              >
+                <Search className="w-5 h-5" />
+              </button>
+              <button
                 onClick={() => setCartOpen(true)}
-                className="p-2 hover:bg-secondary rounded-lg transition-colors relative"
+                className="p-2 hover:bg-secondary/50 rounded-full transition-all duration-300 relative"
                 aria-label={t('cart')}
               >
                 <ShoppingBag className="w-5 h-5" />
                 {cartCount > 0 && (
-                  <span className="absolute top-1 end-1 bg-accent text-accent-foreground text-xs rounded-full w-4 h-4 flex items-center justify-center font-semibold">
+                  <span className="absolute top-0 end-0 bg-accent text-accent-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center font-semibold shadow-soft">
                     {cartCount}
                   </span>
                 )}
               </button>
-              <Sheet>
-                <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" aria-label={t('menu')}>
-                    <Menu className="w-5 h-5" />
-                  </Button>
-                </SheetTrigger>
-                <SheetContent side="right" className="w-full sm:w-96">
-                  <nav className="flex flex-col gap-6 mt-8">
-                    <Link
-                      href="/"
-                      className="font-serif text-lg font-bold hover:opacity-75 transition-opacity"
-                    >
-                      Guzel
-                    </Link>
-                    {navLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                    <div className="border-t pt-6">
-                      <Link
-                        href="/wishlist"
-                        className="flex items-center gap-2 font-medium hover:opacity-75 transition-opacity"
-                      >
-                        <Heart className="w-5 h-5" />
-                        {t('wishlist')} {wishlistCount > 0 && `(${wishlistCount})`}
-                      </Link>
-                    </div>
-                    <div className="border-t pt-6">
-                      <LanguageSwitcher variant="footer" />
-                    </div>
-                    <Link href="/contact" className="text-sm text-muted-foreground hover:text-foreground">
-                      {t('contact')}
-                    </Link>
-                  </nav>
-                </SheetContent>
-              </Sheet>
+              <MobileMenu navLinks={navLinks} wishlistCount={wishlistCount} />
             </div>
           </div>
         </nav>
       </header>
 
-      {/* Cart Drawer */}
+      {/* Drawers & Modals */}
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
+      <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }

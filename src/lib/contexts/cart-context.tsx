@@ -4,7 +4,7 @@ import React, { createContext, useContext, useReducer, useEffect, ReactNode, use
 import { CartItem } from '@/lib/types/commerce';
 import { setCookie, getCookie, deleteCookie } from '@/lib/commerce/utils';
 
-const COOKIE_NAME = 'GUZEL_CART';
+const COOKIE_NAME = 'Güzel_CART';
 
 type CartAction =
   | { type: 'ADD_ITEM'; payload: CartItem }

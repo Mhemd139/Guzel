@@ -16,7 +16,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-12 mb-12">
           {/* Column 1: Brand */}
           <div>
-            <h3 className="font-serif text-xl font-bold text-foreground mb-4">Guzel</h3>
+            <h3 className="font-serif text-xl font-bold text-foreground mb-4">Güzel</h3>
             <p className="text-sm text-muted-foreground mb-6">
               {t('tagline')}
             </p>
@@ -49,7 +49,7 @@ export function Footer() {
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="mailto:hello@Guzel.com"
+                href="mailto:hello@guzel.com"
                 className="p-2 hover:bg-muted rounded-full transition-all duration-300 hover:scale-110 shadow-soft hover:shadow-soft-lg"
                 aria-label="Email"
               >
