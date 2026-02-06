@@ -86,8 +86,8 @@ export function LanguageGate({ children }: { children: React.ReactNode }) {
                     ${isRtl ? 'text-right' : 'text-left'}
                     ${
                       isSelected
-                        ? 'border-accent bg-accent/15 text-foreground scale-110 shadow-soft-lg ring-2 ring-accent/30'
-                        : 'border-border text-muted-foreground hover:border-accent hover:text-foreground hover:scale-105 hover:shadow-soft-lg hover:bg-accent/10 active:bg-accent/20 active:scale-100'
+                        ? 'border-[#AB6432] bg-[#AB6432]/15 text-foreground scale-110 shadow-soft-lg ring-2 ring-[#AB6432]/30'
+                        : 'border-[#CBBFB2] text-[#7D6B5E] hover:border-[#AB6432] hover:text-foreground hover:scale-105 hover:shadow-soft-lg hover:bg-[#AB6432]/10 active:bg-[#AB6432]/20 active:scale-100'
                     }
                   `}
                 >
@@ -104,8 +104,8 @@ export function LanguageGate({ children }: { children: React.ReactNode }) {
             className={`w-full py-4 rounded-full font-semibold text-base transition-all duration-300 shadow-soft
               ${
                 selected
-                  ? 'bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground active:bg-[#8B5A34] hover:scale-105 hover:shadow-soft-lg cursor-pointer'
-                  : 'bg-muted text-muted-foreground cursor-not-allowed opacity-50'
+                  ? 'bg-[#894F2A] text-[#FAF5F0] hover:bg-[#AB6432] active:bg-[#8B5A34] hover:scale-105 hover:shadow-soft-lg cursor-pointer'
+                  : 'bg-[#D1C7BD] text-[#7D6B5E] cursor-not-allowed opacity-50'
               }
             `}
           >
